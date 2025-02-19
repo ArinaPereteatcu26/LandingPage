@@ -34,6 +34,41 @@ nav a:hover {
     color: white;
 }
 
+/* Hero Section */
+#hero {
+    background: linear-gradient(to right, #4CAF50, #2e7d32);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #ff9800;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e68900;
+}
+
 
 
 /* Footer Styles */
