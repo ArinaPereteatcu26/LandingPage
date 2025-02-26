@@ -373,3 +373,83 @@ footer p {
     transform: scale(1.05);
 }
 
+/* Features Section */
+#features {
+    background-color:black;
+    color: black;
+    width: 100vw;
+    height: 100vh;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+#features h2 {
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive; /* Cute handwritten font */
+    color: white;
+    text-shadow: 2px 2px 8px rgba(255, 192, 203, 0.8);
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#features ul {
+    list-style-type: none;
+    padding: 0;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#features li {
+    font-size: 1.2rem;
+    flex: 1 1 200px;
+    margin: 10px;
+    padding: 25px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-align: left;
+}
+
+#features li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+#features li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: plum;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+#features li:hover::before {
+    width: 100%;
+}
+
+#features-top-right-image{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+}
