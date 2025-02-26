@@ -1,13 +1,15 @@
 # Crypto-scam landing page
 I created a simple, responsive crypto-scam landing page, using vanilla css and html.
 
+## Live Demo
+The live demo can be found at:
+https://arinapereteatcu26.github.io/LandingPage/public/index.html
+
 ## Screenshots
 ![Landing Page Screenshot](https://github.com/ArinaPereteatcu26/LandingPage/blob/main/public/screenshots/Screenshot%202025-02-19%20220115.png)
 ![Landing Page Screenshot](https://github.com/ArinaPereteatcu26/LandingPage/blob/main/public/screenshots/Screenshot%202025-02-19%20220619.png)
 ![Landing Page Screenshot](https://github.com/ArinaPereteatcu26/LandingPage/blob/main/public/screenshots/Screenshot%202025-02-19%20220645.png)
 
-## Live Demo
-The live demo can be found at:
 
 ## Features
 - Simple and cute design
