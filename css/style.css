@@ -1,5 +1,6 @@
-﻿/* Global Styles *//* Global Styles */
+﻿/* Global Styles */
 body {
+    font-size: 10px;
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
     color: #333;
@@ -7,9 +8,16 @@ body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+    
+
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
 }
 
 header {
+    font-size: 16px;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     position: fixed;
@@ -25,12 +33,15 @@ header.scrolled {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+
+/* Desktop Navigation */
 nav ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
+    padding: 0;
 }
 
 nav a {
@@ -46,6 +57,20 @@ nav a:hover {
     background-color: plum;
     color: white;
     transform: translateY(-2px);
+}
+
+/* Mobile Navigation */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
 }
 
 
@@ -126,45 +151,87 @@ nav a:hover {
 /* About Section */
 #about {
     background-color: #fff;
-    padding: 60px 20px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
+    position: relative;
+    padding: 20px;
+}
+#about::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
 }
 
 #about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive; /* Cute handwritten font */
+    color: black;
+    text-shadow: 2px 2px 8px rgba(255, 192, 203, 0.8);
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
 }
-
 #about p {
-    font-size: 1.1rem;
-    margin: 0;
-    line-height: 1.8;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+     font-size: 1.5rem;
+     font-family: 'Poppins', sans-serif;
+     max-width: 500px;
+     margin-top: 80px;
+     line-height: 1.8;
+     background: rgba(255, 182, 193, 0.5); /* Increased opacity for visibility */
+     padding: 15px 20px;
+     border-radius: 20px;
+     box-shadow: 0px 4px 15px rgba(255, 182, 193, 0.4); /* Stronger shadow for definition */
+     backdrop-filter: blur(8px); /* Stronger blur to contrast with text */
+     transition: transform 0.3s ease-in-out;
+ }
+#about p:hover {
+    transform: scale(1.05);
 }
 
 /* Features Section */
 #features {
     background-color: #f4f4f4;
-    padding: 60px 20px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
+    position: relative;
+    padding: 20px;
 }
 
 #features h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #features ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 #features li {
@@ -185,11 +252,17 @@ nav a:hover {
 /* Roadmap Section */
 #roadmap {
     background-color: #fff;
-    padding: 60px 20px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
 }
 
 #roadmap h2 {
@@ -199,11 +272,9 @@ nav a:hover {
 
 #roadmap p {
     font-size: 1.1rem;
-    margin: 0;
     line-height: 1.8;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 /* Contact Section */
@@ -792,7 +863,169 @@ footer p {
         transform: translateY(0);
     }
 }
-    
 
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Show mobile banner */
+    .mobile-banner {
+        display: block;
+    }
+
+    /* Navigation menu */
+    .navbar {
+        position: relative;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        width: 100%;
+        top: 50px;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .navbar ul.show {
+        transform: scaleY(1);
+    }
+
+    .navbar li {
+        margin: 15px 0;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 10px;
+    }
+
+    /* Hero section */
+    #hero {
+        padding: 80px 15px;
+    }
+
+    .hero-image {
+        width: 200px;
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 30px;
+    }
+
+    /* Section adjustments */
+    #about h2, #features h2, #roadmap h2 {
+        font-size: 2.2rem;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+
+    #about p, #roadmap p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        padding: 10px 15px;
+    }
+
+    /* Features section */
+    #features ul {
+        gap: 10px;
+    }
+
+    #features li {
+        padding: 15px;
+        margin: 5px;
+    }
+
+    /* Images positioning */
+    #features-top-right-image, .roadmap-top-right-image {
+        position: relative;
+        top: auto;
+        right: auto;
+        max-width: 200px;
+        margin: 10px auto;
+    }
+
+    /* Contact section */
+    #contact {
+        padding: 60px 15px 30px;
+    }
+
+    #contact h2 {
+        font-size: 2rem;
+    }
+
+    /* Explore section */
+    .explore h1 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+        padding: 3px;
+    }
+
+    .filters button {
+        padding: 8px 12px;
+        font-size: 14px;
+        margin: 3px;
+    }
+
+    /* Table adjustments */
+    table {
+        font-size: 0.9rem;
+    }
+
+    tbody td {
+        padding: 12px 10px;
+    }
+
+    .action-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* CTA buttons */
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
 }
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    body {
+        font-size: 9px;
+    }
+
+    .hero-image {
+        width: 150px;
+    }
+
+    #about h2, #features h2, #roadmap h2 {
+        font-size: 1.8rem;
+    }
+
+    #about p, #roadmap p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}
+
 
