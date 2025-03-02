@@ -864,6 +864,68 @@ footer p {
     }
 }
 
+/*Mascot*/
+#mascot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: auto;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1s ease-in-out forwards 3s, /* Delayed fade-in */
+    bounce 1.5s infinite ease-in-out 4s, /* Start bouncing after fade-in */
+    tilt 2s infinite alternate ease-in-out 4s; /* Start tilting after fade-in */
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animations: bouncing and tilting */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes tilt {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* Apply animations */
+.mascot-animated {
+    animation: bounce 1.5s infinite ease-in-out, tilt 2s infinite alternate ease-in-out;
+}
+
+/* Container for positioning */
+.mascot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Message box */
+.mascot-container::after {
+    content: "👋 Welcome! Got money?";
+    display: none;
+    position: absolute;
+    bottom: 120px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    max-width: 200px;
+}
+
+/* Show message on hover */
+.mascot-container:hover::after {
+    display: block;
+}
+=======
 /* Responsive styles */
 @media (max-width: 768px) {
     /* Show mobile banner */
