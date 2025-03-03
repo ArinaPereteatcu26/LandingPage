@@ -15,8 +15,8 @@ https://arinapereteatcu26.github.io/LandingPage/index.html
 ![Screenshot 2025-03-03 193019.png](images/screenshots/Screenshot%202025-03-03%20193019.png)
 ![Screenshot 2025-03-03 193025.png](images/screenshots/Screenshot%202025-03-03%20193025.png)
 ![Screenshot 2025-03-03 193402.png](images/screenshots/Screenshot%202025-03-03%20193402.png)
-The page is also mobile responsive.
 ![Screenshot 2025-03-03 194018.png](images/screenshots/Screenshot%202025-03-03%20194018.png)
+The page is also mobile responsive.
 
 ## Features
 - Simple and cute design
