@@ -35,29 +35,34 @@ header.scrolled {
 
 
 /* Desktop Navigation */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: transparent;
+    backdrop-filter: blur(10px);
+
+}
+
 nav ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
-    padding: 0;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 5px;
-    transition: all 0.3s;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
 }
 
 nav a:hover {
-    background-color: plum;
-    color: white;
     transform: translateY(-2px);
+    background-color: transparent;
 }
 
 
@@ -136,6 +141,7 @@ nav a:hover {
 }
 
 /* About Section */
+/*
 #about {
     background-color: #fff;
     width: 100%;
@@ -161,7 +167,7 @@ nav a:hover {
 
 #about h2 {
     font-size: 3rem;
-    font-family: 'Pacifico', cursive; /* Cute handwritten font */
+    font-family: 'Pacifico', cursive; !* Cute handwritten font *!
     color: black;
     text-shadow: 2px 2px 8px rgba(255, 192, 203, 0.8);
     position: absolute;
@@ -170,26 +176,27 @@ nav a:hover {
     transform: translateX(-50%);
 }
 
-/* Smooth and cute paragraph styling */
+!* Smooth and cute paragraph styling *!
 #about p {
     font-size: 1.5rem;
     font-family: 'Poppins', sans-serif;
     max-width: 500px;
     margin-top: 80px;
     line-height: 1.8;
-    background: rgba(255, 182, 193, 0.5); /* Increased opacity for visibility */
+    background: rgba(255, 182, 193, 0.5); !* Increased opacity for visibility *!
     padding: 15px 20px;
     border-radius: 20px;
-    box-shadow: 0px 4px 15px rgba(255, 182, 193, 0.4); /* Stronger shadow for definition */
-    backdrop-filter: blur(8px); /* Stronger blur to contrast with text */
+    box-shadow: 0px 4px 15px rgba(255, 182, 193, 0.4); !* Stronger shadow for definition *!
+    backdrop-filter: blur(8px); !* Stronger blur to contrast with text *!
     transition: transform 0.3s ease-in-out;
 }
 #about p:hover {
     transform: scale(1.05);
 }
+*/
 
 /* Features Section */
-#features {
+/*#features {
     background-color:black;
     color: black;
     width: 100vw;
@@ -205,7 +212,7 @@ nav a:hover {
 
 #features h2 {
     font-size: 3rem;
-    font-family: 'Pacifico', cursive; /* Cute handwritten font */
+    font-family: 'Pacifico', cursive; !* Cute handwritten font *!
     color: white;
     text-shadow: 2px 2px 8px rgba(255, 192, 203, 0.8);
     position: absolute;
@@ -266,7 +273,7 @@ nav a:hover {
 }
 
 
-/*Roadmap section*/
+!*Roadmap section*!
 #roadmap {
     background-color: #000000;
     color: white;
@@ -281,7 +288,7 @@ nav a:hover {
     padding: 20px;
 }
 
-/* Background overlay for smooth contrast */
+!* Background overlay for smooth contrast *!
 #roadmap::before {
     content: "";
     position: absolute;
@@ -293,10 +300,10 @@ nav a:hover {
     z-index: -1;
 }
 
-/* Cute title styling */
+!* Cute title styling *!
 #roadmap h2 {
     font-size: 3rem;
-    font-family: 'Pacifico', cursive; /* Cute handwritten font */
+    font-family: 'Pacifico', cursive; !* Cute handwritten font *!
     color: #f4f4f4;
     text-shadow: 2px 2px 8px rgba(255, 192, 203, 0.8);
     position: absolute;
@@ -305,7 +312,7 @@ nav a:hover {
     transform: translateX(-50%);
 }
 
-/* Smooth and cute paragraph styling */
+!* Smooth and cute paragraph styling *!
 #roadmap p {
     font-size: 1.5rem;
     font-family: 'Poppins', sans-serif;
@@ -339,7 +346,7 @@ nav a:hover {
 #roadmap ul li:hover {
     transform: scale(1.05);
 }
-/* Responsive styling */
+!* Responsive styling *!
 @media (max-width: 768px) {
     .navbar {
         text-align: left;
@@ -354,7 +361,7 @@ nav a:hover {
     position: absolute;
     top: 40px;
     right: 40px;
-}
+}*/
 /* Contact Section */
 #contact {
     background-color: #f4f4f4;
@@ -422,13 +429,12 @@ nav a:hover {
 }
 
 .explore h1 {
-    font-size: 3rem;
-    font-family: 'Pacifico', cursive;
-    font-weight: 600;
-    margin-bottom: 60px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(255, 192, 203, 0.8);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 80px;
+    position:relative;
+    top: 50px;
+    color: white;
 
 }
 
