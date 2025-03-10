@@ -879,3 +879,18 @@ footer p {
         display: none;
     }
 }
+
+#scammed {
+    background-color: #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scammed-image {
+    width: 50vw;  /* Adjust size to make it smaller */
+    height: 100%;  /* Keeps aspect ratio */
+    margin-bottom: 20px;
+}
+ 
