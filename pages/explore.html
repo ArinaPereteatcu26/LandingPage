@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NotShady Coin</title>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700&display=swap');
-
         body {
             font-family: 'Inter', sans-serif;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -18,36 +15,20 @@
         h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
         }
-        
-
-        #mobile-menu {
-            display: none;
-        }
-
-        #menu-toggle {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        #menu-toggle:checked ~ #mobile-menu {
-            display: flex;
-        }
-
-        .cta-button {
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
 
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); }
             100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
         }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
-<!-- Navigation with working hamburger menu -->
+<!-- Navigation with CSS-only hamburger menu -->
 <nav class="sticky top-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
@@ -70,154 +51,187 @@
 
             <div class="flex items-center justify-end">
                 <!-- Desktop Invest Now Button -->
-                <a href="../pages/scammed.html" class="hidden md:block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg cta-button">INVEST NOW</a>
+                <a href="../pages/scammed.html" class="hidden md:block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg pulse-animation">INVEST NOW</a>
 
-                <!-- Hamburger Menu Toggle -->
-                <input type="checkbox" id="menu-toggle" class="hidden" />
-                <label for="menu-toggle" class="md:hidden cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </label>
+                <!-- CSS-only hamburger menu implementation -->
+                <div class="md:hidden group relative">
+                    <button class="group p-2 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
 
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="flex-col absolute left-0 right-0 top-full bg-black/70 backdrop-blur-md z-40 md:hidden">
-                    <a href="../index.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Home</a>
-                    <a href="../pages/about.html" class="text-white font-bold p-3 text-center border-l-4 border-pink-500 bg-white/5">About</a>
-                    <a href="../pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Features</a>
-                    <a href="../pages/roadmap.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Roadmap</a>
-                    <a href="../pages/explore.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Tokenomics</a>
-                    <a href="../pages/scammed.html" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg mx-auto my-4">INVEST NOW</a>
+                    <!-- Mobile menu dropdown (CSS-only) -->
+                    <div class="hidden group-hover:flex group-focus-within:flex flex-col absolute right-0 top-full mt-1 w-48 bg-black/70 backdrop-blur-md z-40 rounded-md overflow-hidden">
+                        <a href="../index.html" class="text-white/70 hover:text-white hover:bg-white/10 transition-colors font-medium p-3 text-center">Home</a>
+                        <a href="../pages/about.html" class="text-white/70 hover:text-white hover:bg-white/10 transition-colors font-medium p-3 text-center">About</a>
+                        <a href="../pages/features.html" class="text-white/70 hover:text-white hover:bg-white/10 transition-colors font-medium p-3 text-center">Features</a>
+                        <a href="../pages/roadmap.html" class="text-white/70 hover:text-white hover:bg-white/10 transition-colors font-medium p-3 text-center">Roadmap</a>
+                        <a href="../pages/explore.html" class="text-white font-bold p-3 text-center border-l-4 border-pink-500 bg-white/5">Tokenomics</a>
+                        <a href="../pages/scammed.html" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg mx-auto my-4 pulse-animation">INVEST NOW</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </nav>
 
-<div class="explore">
-    <h1>Trending coins</h1>
-    <div class="filters">
-        <button class="active">🔥 Hot ones</button>
-        <button>⚡ New coins</button>
-        <button>💰 Most profit</button>
+<div class="max-w-6xl mx-auto px-4 py-8 w-full">
+    <h1 class="text-3xl font-bold mb-6 text-center md:text-left">Trending coins</h1>
+
+    <div class="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
+        <button class="px-4 py-2 bg-pink-500 text-white rounded-full font-medium hover:bg-pink-600 transition-colors">🔥 Hot ones</button>
+        <button class="px-4 py-2 bg-gray-800 text-white rounded-full font-medium hover:bg-gray-700 transition-colors">⚡ New coins</button>
+        <button class="px-4 py-2 bg-gray-800 text-white rounded-full font-medium hover:bg-gray-700 transition-colors">💰 Most profit</button>
     </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Coin name</th>
-            <th>Last price</th>
-            <th>24h Change</th>
-            <th>Chart</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody id="cryptoTable">
-        <tr>
-            <td>
-                <div class="coin-icon">
-                    <img src="../images/btc-icon.png" alt="BTC">
-                </div>
-                <div class="coin-info">
-                    <span class="coin-name">Bitcoin</span>
-                    <span class="coin-symbol">BNB</span>
-                </div>
-            </td>
-            <td>$ 23,207.5</td>
-            <td><span class="change-positive">+2.62%</span></td>
-            <td><div class="chart-container">📈</div></td>
-            <td>
-                <button class="action-button details-button">Details</button>
-                <button class="action-button">Trade</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="coin-icon">
-                    <img src="../images/eth-icon.png" alt="BTC">
-                </div>
-                <div class="coin-info">
-                    <span class="coin-name">Ethereum</span>
-                    <span class="coin-symbol">ETH</span>
-                </div>
-            </td>
-            <td>$ 1,515 </td>
-            <td><span class="change-negative">-0.76%</span></td>
-            <td><div class="chart-container">📉</div></td>
-            <td>
-                <button class="action-button details-button">Details</button>
-                <button class="action-button">Trade</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="coin-icon">
-                    <img src="../images/usdt-icon.png" alt="BTC">
-                </div>
-                <div class="coin-info">
-                    <span class="coin-name">USDT</span>
-                    <span class="coin-symbol">Tether US</span>
-                </div>
-            </td>
-            <td>$ 1.00 </td>
-            <td><span class="change-positive">+0.09%</span></td>
-            <td><div class="chart-container">📈</div></td>
-            <td>
-                <button class="action-button details-button">Details</button>
-                <button class="action-button">Trade</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="coin-icon">
-                    <img src="../images/polygon-icon.png" alt="BTC">
-                </div>
-                <div class="coin-info">
-                    <span class="coin-name">Polygon</span>
-                    <span class="coin-symbol">MATIC</span>
-                </div>
-            </td>
-            <td>$ 1.29 </td>
-            <td><span class="change-positive">+3.94%</span></td>
-            <td><div class="chart-container">📈</div></td>
-            <td>
-                <button class="action-button details-button">Details</button>
-                <button class="action-button">Trade</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="coin-icon">
-                    <img src="../images/ripple-icon.png" alt="BTC">
-                </div>
-                <div class="coin-info">
-                    <span class="coin-name">Ripple</span>
-                    <span class="coin-symbol">XRP</span>
-                </div>
-            </td>
-            <td>$ 0.38210000 </td>
-            <td><span class="change-negative">+0.04%</span></td>
-            <td><div class="chart-container">📈</div></td>
-            <td>
-                <button class="action-button details-button">Details</button>
-                <button class="action-button">Trade</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="coin-icon">
-                    <img src="../images/polka-icon.png" alt="BTC">
-                </div>
-                <div class="coin-info">
-                    <span class="coin-name">Polkadot</span>
-                    <span class="coin-symbol">DOT</span>
-                </div>
-            </td>
-            <td>$ 6.31 </td>
-            <td><span class="change-positive">+1.20%</span></td>
-            <td><div class="chart-container">📈</div></td>
-            <td>
-                <button class="action-button details-button">Details</button>
-                <button class="action-button">Trade</button>
-            </td>
-    </table>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-black/30 backdrop-blur-md rounded-lg overflow-hidden">
+            <thead>
+            <tr class="border-b border-white/10">
+                <th class="py-4 px-6 text-left text-white/70 font-medium">Coin name</th>
+                <th class="py-4 px-6 text-left text-white/70 font-medium">Last price</th>
+                <th class="py-4 px-6 text-left text-white/70 font-medium">24h Change</th>
+                <th class="py-4 px-6 text-left text-white/70 font-medium">Chart</th>
+                <th class="py-4 px-6 text-left text-white/70 font-medium"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center overflow-hidden">
+                            <img src="../images/btc-icon.png" alt="BTC" class="w-6 h-6">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-medium">Bitcoin</span>
+                            <span class="text-white/50 text-sm">BTC</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 px-6 font-medium">$ 23,207.5</td>
+                <td class="py-4 px-6"><span class="text-green-500">+2.62%</span></td>
+                <td class="py-4 px-6"><div class="text-2xl">📈</div></td>
+                <td class="py-4 px-6">
+                    <div class="flex space-x-2">
+                        <a href="#" class="px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors">Details</a>
+                        <a href="#" class="px-3 py-1 rounded bg-pink-500 text-white hover:bg-pink-600 transition-colors">Trade</a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center overflow-hidden">
+                            <img src="../images/eth-icon.png" alt="ETH" class="w-6 h-6">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-medium">Ethereum</span>
+                            <span class="text-white/50 text-sm">ETH</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 px-6 font-medium">$ 1,515</td>
+                <td class="py-4 px-6"><span class="text-red-500">-0.76%</span></td>
+                <td class="py-4 px-6"><div class="text-2xl">📉</div></td>
+                <td class="py-4 px-6">
+                    <div class="flex space-x-2">
+                        <a href="#" class="px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors">Details</a>
+                        <a href="#" class="px-3 py-1 rounded bg-pink-500 text-white hover:bg-pink-600 transition-colors">Trade</a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center overflow-hidden">
+                            <img src="../images/usdt-icon.png" alt="USDT" class="w-6 h-6">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-medium">USDT</span>
+                            <span class="text-white/50 text-sm">Tether US</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 px-6 font-medium">$ 1.00</td>
+                <td class="py-4 px-6"><span class="text-green-500">+0.09%</span></td>
+                <td class="py-4 px-6"><div class="text-2xl">📈</div></td>
+                <td class="py-4 px-6">
+                    <div class="flex space-x-2">
+                        <a href="#" class="px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors">Details</a>
+                        <a href="#" class="px-3 py-1 rounded bg-pink-500 text-white hover:bg-pink-600 transition-colors">Trade</a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center overflow-hidden">
+                            <img src="../images/polygon-icon.png" alt="MATIC" class="w-6 h-6">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-medium">Polygon</span>
+                            <span class="text-white/50 text-sm">MATIC</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 px-6 font-medium">$ 1.29</td>
+                <td class="py-4 px-6"><span class="text-green-500">+3.94%</span></td>
+                <td class="py-4 px-6"><div class="text-2xl">📈</div></td>
+                <td class="py-4 px-6">
+                    <div class="flex space-x-2">
+                        <a href="#" class="px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors">Details</a>
+                        <a href="#" class="px-3 py-1 rounded bg-pink-500 text-white hover:bg-pink-600 transition-colors">Trade</a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center overflow-hidden">
+                            <img src="../images/ripple-icon.png" alt="XRP" class="w-6 h-6">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-medium">Ripple</span>
+                            <span class="text-white/50 text-sm">XRP</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 px-6 font-medium">$ 0.38210000</td>
+                <td class="py-4 px-6"><span class="text-green-500">+0.04%</span></td>
+                <td class="py-4 px-6"><div class="text-2xl">📈</div></td>
+                <td class="py-4 px-6">
+                    <div class="flex space-x-2">
+                        <a href="#" class="px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors">Details</a>
+                        <a href="#" class="px-3 py-1 rounded bg-pink-500 text-white hover:bg-pink-600 transition-colors">Trade</a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-400 flex items-center justify-center overflow-hidden">
+                            <img src="../images/polka-icon.png" alt="DOT" class="w-6 h-6">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-medium">Polkadot</span>
+                            <span class="text-white/50 text-sm">DOT</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 px-6 font-medium">$ 6.31</td>
+                <td class="py-4 px-6"><span class="text-green-500">+1.20%</span></td>
+                <td class="py-4 px-6"><div class="text-2xl">📈</div></td>
+                <td class="py-4 px-6">
+                    <div class="flex space-x-2">
+                        <a href="#" class="px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors">Details</a>
+                        <a href="#" class="px-3 py-1 rounded bg-pink-500 text-white hover:bg-pink-600 transition-colors">Trade</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+</body>
+</html>
