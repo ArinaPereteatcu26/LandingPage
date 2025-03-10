@@ -4,21 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NotShady Coin</title>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-custom': 'pulse 2s infinite',
+                    },
+                    keyframes: {
+                        pulse: {
+                            '0%': { boxShadow: '0 0 0 0 rgba(236, 72, 153, 0.4)' },
+                            '70%': { boxShadow: '0 0 0 10px rgba(236, 72, 153, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(236, 72, 153, 0)' }
+                        }
+                    }
+                },
+            },
+        }
+
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: all 0.3s ease;
         }
 
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
+        .highlight-card {
+            background-color: rgba(236, 72, 153, 0.15);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .info-card {
+            background-color: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .mascot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards 3s,
+            bounce 1.5s infinite ease-in-out 4s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .mascot-container::after {
+            content: "👋 Welcome! Got money?";
+            display: none;
+            position: absolute;
+            bottom: 120px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            max-width: 200px;
+        }
+
+        .mascot-container:hover::after {
+            display: block;
+        }
 
         #mobile-menu {
             display: none;
@@ -46,8 +118,8 @@
         }
     </style>
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col">
-<!-- Navigation with working hamburger menu -->
+<body class="font-inter bg-black text-white min-h-screen flex flex-col bg-[url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z\' fill=\'%23ffffff\' fill-opacity=\'0.05\' fill-rule=\'evenodd\'/%3E%3C/svg%3E')]">
+<!-- Navigation with CSS-only hamburger menu -->
 <nav class="sticky top-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
@@ -69,6 +141,26 @@
 
             <div class="flex items-center justify-end">
                 <!-- Desktop Invest Now Button -->
+                <a href="pages/scammed.html" class="hidden md:block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg animate-pulse-custom">INVEST NOW</a>
+
+                <!-- CSS-only Hamburger Menu Toggle -->
+                <div class="md:hidden">
+                    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+                    <label for="menu-toggle" class="cursor-pointer block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </label>
+
+                    <!-- Mobile Menu (Hidden by default, shown when peer is checked) -->
+                    <div class="hidden absolute left-0 right-0 top-full bg-black/70 backdrop-blur-md z-40 flex-col peer-checked:flex">
+                        <a href="index.html" class="text-white font-bold p-3 text-center border-l-4 border-pink-500 bg-white/5">Home</a>
+                        <a href="pages/about.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">About</a>
+                        <a href="pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Features</a>
+                        <a href="pages/roadmap.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Roadmap</a>
+                        <a href="pages/explore.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Tokenomics</a>
+                        <a href="pages/scammed.html" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg mx-auto my-4 animate-pulse-custom">INVEST NOW</a>
+                    </div>
                 <a href="pages/scammed.html" class="hidden md:block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg cta-button">INVEST NOW</a>
 
                 <!-- Hamburger Menu Toggle -->
@@ -96,36 +188,62 @@
 <!-- Hero Section with enhanced background visibility -->
 <section id="hero" class="relative flex flex-col justify-center items-center bg-cover bg-center h-screen bg-fixed" style="background-image: url('/images/Home.png');">
     <div class="absolute inset-0 bg-black opacity-10"></div> <!-- Overlay for better text visibility -->
-    <div class="relative z-10 text-center text-white py-24 px-4">
-    </div>
+    <div class="relative z-10 text-center text-white py-24 px-4"></div>
 </section>
 
 <!-- Mobile-only features section -->
+<section id="mobile-features" class="md:hidden py-12 px-4 bg-gray-900">
+    <h2 class="text-2xl font-poppins text-center mb-8">Quick Access Features</h2>
+    <div class="grid gap-6">
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <div class="text-pink-500 text-3xl mb-4 flex justify-center">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-poppins text-center mb-2">Instant Transactions</h3>
+            <p class="text-gray-300 text-center">Send your money to us instantly! Getting it back might take... forever.</p>
 <section id="mobile-features" class="mobile-only">
     <h2>Quick Access Features</h2>
     <div class="feature-card">
         <div class="feature-icon">
             <i class="fas fa-rocket"></i>
         </div>
-        <h3>Instant Transactions</h3>
-        <p>Send your money to us instantly! Getting it back might take... forever.</p>
-    </div>
-    <div class="feature-card">
-        <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <div class="text-pink-500 text-3xl mb-4 flex justify-center">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-poppins text-center mb-2">Totally Secure</h3>
+            <p class="text-gray-300 text-center">Security so advanced even we can't explain how it works!</p>
         </div>
-        <h3>Totally Secure</h3>
-        <p>Security so advanced even we can't explain how it works!</p>
-    </div>
-    <div class="feature-card">
-        <div class="feature-icon">
-            <i class="fas fa-chart-line"></i>
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <div class="text-pink-500 text-3xl mb-4 flex justify-center">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-poppins text-center mb-2">Mobile Trading</h3>
+            <p class="text-gray-300 text-center">Trade on the go and watch your investment disappear in real-time.</p>
         </div>
-        <h3>Mobile Trading</h3>
-        <p>Trade on the go and watch your investment disappear in real-time.</p>
     </div>
 </section>
-
+<section id="contact" class="py-12 px-4 bg-white text-black">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-poppins text-center mb-8">Contact Us</h2>
+        <p class="text-center text-lg mb-4">Have questions? Our totally real, definitely not offshore support team is here to help! 🤡💸</p>
+        <div class="flex flex-col items-center space-y-2">
+            <p class="font-medium">Email: Contact@NotScam.com</p>
+            <p class="font-medium">Real phone nr: +666 420 69</p>
+            <p class="font-medium">Contact us 24/7 (or whenever we feel like replying)</p>
+        </div>
+    </div>
+</section>
+<div class="fixed bottom-6 right-6 mascot-container">
+    <img src="/images/mascot.png" alt="NotShady Coin Mascot" class="w-24 h-auto mascot shadow-2xl rounded-full">
+</div>
+<footer class="bg-gray-900 py-6 text-center text-gray-400">
 <section id="contact" class="text-black">
     <h2>Contact Us</h2>
     <p>Have questions? Our totally real, definitely not offshore support team is here to help! 🤡💸</p>
@@ -137,8 +255,6 @@
 <div class="mascot-container">
     <img id="mascot" src="images/mascot.png" alt="Mascot">
 </div>
-
-
 <footer>
     <p>&copy; 2025 NotShady Coin. All rights reserved.</p>
 </footer>
