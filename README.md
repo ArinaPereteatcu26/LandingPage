@@ -3,7 +3,7 @@ I created a simple, responsive crypto-scam landing page, using vanilla css and h
 
 ## Live Demo
 The live demo can be found at:
-https://arinapereteatcu26.github.io/LandingPage/index.html
+https://arinapereteatcu26.github.io/LandingPage/
 
 ## Screenshots
 ![Screenshot 2025-03-03 192913.png](images/screenshots/Screenshot%202025-03-03%20192913.png)
