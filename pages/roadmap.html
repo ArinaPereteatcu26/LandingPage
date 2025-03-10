@@ -6,42 +6,38 @@
     <title>NotShady Coin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700&display=swap');
 
         body {
             font-family: 'Inter', sans-serif;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
         }
 
         .glass-card {
             backdrop-filter: blur(10px);
             background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.125);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             transition: all 0.3s ease;
         }
 
         .glass-card:hover {
-            transform: scale(1.02);
-            backdrop-filter: blur(15px);
+            transform: translateY(-5px);
             background-color: rgba(255, 255, 255, 0.15);
         }
-        .box-container {
-            perspective: 1000px;
+
+        .highlight-card {
+            background-color: rgba(236, 72, 153, 0.15);
+            border: 1px solid rgba(236, 72, 153, 0.3);
         }
 
-        .content-box {
-            background-color: #FFE4E1;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-
-        .content-box:hover {
-            transform: scale(1.02) rotate(1deg);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            background-color: #FFF0F5;
+        .info-card {
+            background-color: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         .mascot {
@@ -50,27 +46,21 @@
             right: 20px;
             width: 100px;
             height: auto;
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 1s ease-in-out forwards 3s, /* Delayed fade-in */
-            bounce 1.5s infinite ease-in-out 4s, /* Start bouncing after fade-in */
-            tilt 2s infinite alternate ease-in-out 4s; /* Start tilting after fade-in */
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards 3s,
+            bounce 1.5s infinite ease-in-out 4s;
         }
-        /* Fade-in effect */
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* Animations: bouncing and tilting */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
 
-        @keyframes tilt {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(5deg); }
-        }
         .mascot-container::after {
             content: "👋 Welcome! Got money?";
             display: none;
@@ -89,43 +79,247 @@
             display: block;
         }
 
+        #mobile-menu {
+            display: none;
+        }
+
+        #menu-toggle {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        #menu-toggle:checked ~ #mobile-menu {
+            display: flex;
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white min-h-screen flex flex-col">
-<nav class="sticky top-0 z-50 bg-transparent backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex space-x-6">
-            <a href="../index.html" class="text-white/70 hover:text-white transition-colors font-medium">Home</a>
-            <a href="../pages/about.html" class="text-white/70 hover:text-white transition-colors font-medium">About</a>
-            <a href="../pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium">Features</a>
-            <a href="../pages/roadmap.html" class="text-white/70 hover:text-white transition-colors font-medium">Roadmap</a>
-            <a href="../pages/explore.html" class="text-white/70 hover:text-white transition-colors font-medium">Tokenomics</a>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-800 to-blue-900 text-white min-h-screen flex flex-col">
+<!-- Navigation with working hamburger menu -->
+<nav class="sticky top-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center space-x-2">
+                <svg class="w-8 h-8 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"></path>
+                </svg>
+                <span class="font-bold text-xl text-pink-500">NotShady</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-white/70 hover:text-white transition-colors font-medium">Home</a>
+                <a href="../pages/about.html" class="text-white/70 hover:text-white transition-colors font-medium">About</a>
+                <a href="../pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium">Features</a>
+                <a href="../pages/roadmap.html" class="text-white font-bold border-b-2 border-pink-500">Roadmap</a>
+                <a href="../pages/explore.html" class="text-white/70 hover:text-white transition-colors font-medium">Tokenomics</a>
+            </div>
+
+            <div class="flex items-center justify-end">
+                <!-- Desktop Invest Now Button -->
+                <a href="../pages/scammed.html" class="hidden md:block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg cta-button">INVEST NOW</a>
+
+                <!-- Hamburger Menu Toggle -->
+                <input type="checkbox" id="menu-toggle" class="hidden" />
+                <label for="menu-toggle" class="md:hidden cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </label>
+
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="flex-col absolute left-0 right-0 top-full bg-black/70 backdrop-blur-md z-40 md:hidden">
+                    <a href="../index.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Home</a>
+                    <a href="../pages/about.html" class="text-white font-bold p-3 text-center border-l-4 border-pink-500 bg-white/5">About</a>
+                    <a href="../pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Features</a>
+                    <a href="../pages/roadmap.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Roadmap</a>
+                    <a href="../pages/explore.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Tokenomics</a>
+                    <a href="../pages/scammed.html" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg mx-auto my-4">INVEST NOW</a>
+                </div>
+            </div>
         </div>
-        <a href="../pages/scammed.html" class="bg-emerald-500 text-white px-6 py-2 rounded-full hover:bg-emerald-600 transition-colors font-bold shadow-lg hover:shadow-emerald-500/50">INVEST NOW</a>
     </div>
 </nav>
 
+<!-- Main Content -->
+<div class="max-w-6xl mx-auto px-4 py-16">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+        <div class="flex justify-center mb-6">
+            <img src="../images/CoinIcon.png" alt="NotShady Coin" class="w-24 h-24 coin-spinning shadow-lg rounded-full border-4 border-pink-500">
+        </div>
+        <h1 class="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-white to-yellow-300">Our Roadmap</h1>
+    </div>
 
+    <!-- Roadmap Content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="col-span-1 md:col-span-2">
+            <div class="glass-card p-8 rounded-2xl mb-8">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-map-marked-alt text-pink-500 text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold">The Journey to Riches</h2>
+                </div>
 
-<main class="flex-grow flex items-center justify-center p-4">
-    <div class="max-w-2xl w-full space-y-8">
-        <h1 class="text-3xl font-bold text-center mb-8 text-white drop-shadow-lg">Our Roadmap</h1>
-        <p class="text-lg text-center text-black-700 mb-6">How it works</p>
+                <div class="space-y-10 pl-4">
+                    <div class="roadmap-item pb-10">
+                        <h3 class="text-xl font-bold text-pink-500 mb-2">Phase 1: Launch & HODL</h3>
+                        <p class="text-gray-300 mb-4">You HODL until the moon 🌕 (or until your patience runs out).</p>
+                        <div class="bg-white/10 p-4 rounded">
+                            <ul class="list-disc pl-5 space-y-2 text-gray-200">
+                                <li>Buy the overpriced coin</li>
+                                <li>Launch on definitely legitimate exchanges</li>
+                            </ul>
+                        </div>
+                    </div>
 
-        <ul class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 space-y-4">
-            <li class="text-black font-medium">1. You HODL until the moon 🌕 (or until your patience runs out).</li>
-            <li class="text-black font-medium">2. Tell your friends, so they tell their friends, so we all pretend it’s valuable.</li>
-            <li class="text-black font-medium">3. ???</li>
-            <li class="text-black font-medium">4. Profit. (Or not. No guarantees. 🚀)</li>
-        </ul>
-        <div class="relative mt-8 flex justify-center">
-            <img src="../images/CoinIcon.png" alt="Logo" class="w-20 opacity-80">
+                    <div class="roadmap-item pb-10">
+                        <h3 class="text-xl font-bold text-pink-500 mb-2">Phase 2: Social Engineering</h3>
+                        <p class="text-gray-300 mb-4">Tell your friends, so they tell their friends, so we all pretend it's valuable.</p>
+                        <div class="bg-white/10 p-4 rounded">
+                            <ul class="list-disc pl-5 space-y-2 text-gray-200">
+                                <li>Launch a presale—friends, family, and some random dude from Discord invest first.</li>
+                                <li>Build a telegram group with lots of emojis 🍆</li>
+                                <li>Partner with other questionable projects</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item pb-10">
+                        <h3 class="text-xl font-bold text-pink-500 mb-2">Phase 3: ???</h3>
+                        <p class="text-gray-300 mb-4">The mysterious middle phase where magic happens.</p>
+                        <div class="bg-white/10 p-4 rounded">
+                            <ul class="list-disc pl-5 space-y-2 text-gray-200">
+                                <li>Unexplainable market movements</li>
+                                <li>Who knows what else 🤷‍♂️</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item">
+                        <h3 class="text-xl font-bold text-pink-500 mb-2">Phase 4: Profit</h3>
+                        <p class="text-gray-300 mb-4">Profit. (Or not. No guarantees)</p>
+                        <div class="bg-white/10 p-4 rounded">
+                            <ul class="list-disc pl-5 space-y-2 text-gray-200">
+                                <li>Lambos or not- it's a surprise!</li>
+                                <li>Potential divorce with your wife</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="col-span-1">
+            <!-- Investment Calculator -->
+            <div class="glass-card info-card p-6 rounded-2xl mb-8">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-calculator text-blue-400 mr-2"></i>
+                    ROI Calculator
+                </h3>
+                <p class="text-sm text-gray-300 mb-4">See how rich you'll definitely become!</p>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Initial Investment</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center">$</span>
+                            <label>
+                                <input type="text" class="bg-white/10 rounded w-full py-2 pl-8 pr-3 text-white" value="1,000">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Holding Period</label>
+                        <label>
+                            <select class="bg-black/10 rounded w-full py-2 px-3 text-white">
+                                <option>1 Month</option>
+                                <option>6 Months</option>
+                                <option selected>1 Year</option>
+                                <option>5 Years</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Expected Return</label>
+                        <label>
+                            <select class="bg-black/10 rounded w-full py-2 px-3 text-white">
+                                <option>Conservative (100x)</option>
+                                <option>Reasonable (1,000x)</option>
+                                <option selected>Realistic (10,000x)</option>
+                                <option>Conservative Again (100,000x)</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="bg-black/20 p-4 rounded-lg">
+                        <div class="text-sm text-gray-300">Projected Returns:</div>
+                        <div class="text-2xl font-bold text-green-400">$10,000,000</div>
+                        <div class="text-xs text-gray-400">*Not financial advice, definitely not guaranteed</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</main>
+    
+    <!-- Partners Section -->
+    <div class="glass-card p-8 rounded-2xl mb-16">
+        <h2 class="text-2xl font-bold mb-6 text-center">Trusted By</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white/10 p-4 rounded-lg flex items-center justify-center h-24">
+                <div class="text-center">
+                    <i class="fas fa-building text-3xl text-gray-300 mb-2"></i>
+                    <div class="text-sm font-medium">Definitely Real Bank</div>
+                </div>
+            </div>
+            <div class="bg-white/10 p-4 rounded-lg flex items-center justify-center h-24">
+                <div class="text-center">
+                    <i class="fas fa-landmark text-3xl text-gray-300 mb-2"></i>
+                    <div class="text-sm font-medium">Legitimate Finance</div>
+                </div>
+            </div>
+            <div class="bg-white/10 p-4 rounded-lg flex items-center justify-center h-24">
+                <div class="text-center">
+                    <i class="fas fa-shield-alt text-3xl text-gray-300 mb-2"></i>
+                    <div class="text-sm font-medium">Trust Us Security</div>
+                </div>
+            </div>
+            <div class="bg-white/10 p-4 rounded-lg flex items-center justify-center h-24">
+                <div class="text-center">
+                    <i class="fas fa-check-circle text-3xl text-gray-300 mb-2"></i>
+                    <div class="text-sm font-medium">Verified by Nobody</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-r from-indigo-900 to-purple-900 p-10 rounded-2xl mb-8 text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Join the Revolution?</h2>
+        <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Don't pass on what could be a once-in-a-lifetime chance or a useful lesson in prudence.</p>
+        <a href="../pages/scammed.html" class="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-500 to-pink-600 text-white px-8 py-4 rounded-full transition-all text-lg font-extrabold shadow-xl hover:shadow-2xl cta-button">
+            <i class="fas fa-rocket"></i>
+            <span>START YOUR JOURNEY NOW</span>
+        </a>
+    </div>
+</div>
 
 <div class="fixed bottom-6 right-6 mascot-container">
-    <img src="../images/mascot.png" alt="NotShady Coin Mascot" class="w-32 h-auto mascot shadow-2xl rounded-full">
+    <img src="../images/mascot.png" alt="NotShady Coin Mascot" class="w-24 h-auto mascot shadow-2xl rounded-full">
 </div>
 
 <footer class="bg-gray-800 text-white py-4 text-center">

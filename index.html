@@ -19,66 +19,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        .glass-card {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.125);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            transition: all 0.3s ease;
-        }
 
-        .glass-card:hover {
-            transform: scale(1.02);
-            backdrop-filter: blur(15px);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .mascot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 100px;
-            height: auto;
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 1s ease-in-out forwards 3s, /* Delayed fade-in */
-            bounce 1.5s infinite ease-in-out 4s, /* Start bouncing after fade-in */
-            tilt 2s infinite alternate ease-in-out 4s; /* Start tilting after fade-in */
-        }
-        /* Fade-in effect */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Animations: bouncing and tilting */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes tilt {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(5deg); }
-        }
-
-        .mascot-container::after {
-            content: "👋 Welcome! Got money?";
-            display: none;
-            position: absolute;
-            bottom: 120px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            max-width: 200px;
-        }
-
-        .mascot-container:hover::after {
-            display: block;
-        }
-        /* Add crucial styles for the checkbox hack */
         #mobile-menu {
             display: none;
         }
@@ -120,12 +61,6 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-6">
                 <a href="index.html" class="text-white font-bold border-b-2 border-pink-500">Home</a>
-<nav class="sticky top-0 z-50 bg-transparent backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-4 py-4">
-        <div class="flex justify-between items-center">
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="text-white/70 hover:text-white transition-colors font-medium">Home</a>
                 <a href="pages/about.html" class="text-white/70 hover:text-white transition-colors font-medium">About</a>
                 <a href="pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium">Features</a>
                 <a href="pages/roadmap.html" class="text-white/70 hover:text-white transition-colors font-medium">Roadmap</a>
@@ -135,7 +70,7 @@
             <div class="flex items-center justify-end">
                 <!-- Desktop Invest Now Button -->
                 <a href="pages/scammed.html" class="hidden md:block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg cta-button">INVEST NOW</a>
-                <a href="pages/scammed.html" class="hidden md:block bg-emerald-500 text-white px-6 py-2 rounded-full hover:bg-emerald-600 transition-colors font-bold shadow-lg hover:shadow-emerald-500/50">INVEST NOW</a>
+
                 <!-- Hamburger Menu Toggle -->
                 <input type="checkbox" id="menu-toggle" class="hidden" />
                 <label for="menu-toggle" class="md:hidden cursor-pointer">
@@ -144,14 +79,14 @@
                     </svg>
                 </label>
 
-                <!-- Mobile Menu (hidden by default, shown when checkbox is checked) -->
+                <!-- Mobile Menu -->
                 <div id="mobile-menu" class="flex-col absolute left-0 right-0 top-full bg-black/70 backdrop-blur-md z-40 md:hidden">
                     <a href="index.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Home</a>
-                    <a href="pages/about.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">About</a>
+                    <a href="pages/about.html" class="text-white font-bold p-3 text-center border-l-4 border-pink-500 bg-white/5">About</a>
                     <a href="pages/features.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Features</a>
                     <a href="pages/roadmap.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Roadmap</a>
                     <a href="pages/explore.html" class="text-white/70 hover:text-white transition-colors font-medium p-3 text-center">Tokenomics</a>
-                    <a href="pages/scammed.html" class="bg-emerald-500 text-white px-6 py-2 rounded-full hover:bg-emerald-600 transition-colors font-bold shadow-lg hover:shadow-emerald-500/50 mx-auto my-4">INVEST NOW</a>
+                    <a href="pages/scammed.html" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-bold shadow-lg mx-auto my-4">INVEST NOW</a>
                 </div>
             </div>
         </div>
@@ -166,7 +101,7 @@
 </section>
 
 <!-- Mobile-only features section -->
-<section id="mobile-features" class="mobile-only text-black">
+<section id="mobile-features" class="mobile-only">
     <h2>Quick Access Features</h2>
     <div class="feature-card">
         <div class="feature-icon">
@@ -191,7 +126,6 @@
     </div>
 </section>
 
-
 <section id="contact" class="text-black">
     <h2>Contact Us</h2>
     <p>Have questions? Our totally real, definitely not offshore support team is here to help! 🤡💸</p>
@@ -200,12 +134,12 @@
     <p>Contact us 24/7 (or whenever we feel like replying)</p>
 </section>
 
-
-<div class="mascot-container text-center my-16">
-    <img id="mascot" src="images/mascot.png" alt="Mascot" class="mx-auto" />
+<div class="mascot-container">
+    <img id="mascot" src="images/mascot.png" alt="Mascot">
 </div>
 
-<footer class="bg-black text-white text-center py-4">
+
+<footer>
     <p>&copy; 2025 NotShady Coin. All rights reserved.</p>
 </footer>
 </body>
