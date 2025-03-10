@@ -844,7 +844,7 @@ footer p {
     }
 
     #mobile-features h2 {
-        color: #333;
+        color: black;
         font-size: 2rem;
         margin-bottom: 20px;
     }
@@ -864,11 +864,13 @@ footer p {
     }
 
     #mobile-features h3 {
+        color:black;
         font-size: 1.4rem;
         margin-bottom: 10px;
     }
 
     #mobile-features p {
+        color:black;
         font-size: 1rem;
     };
     
